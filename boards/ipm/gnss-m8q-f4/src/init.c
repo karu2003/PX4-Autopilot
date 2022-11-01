@@ -52,23 +52,28 @@
 #include <syslog.h>
 
 #include <nuttx/board.h>
+#include <nuttx/spi/spi.h>
+#include <nuttx/i2c/i2c_master.h>
+#include <nuttx/mmcsd.h>
+#include <nuttx/analog/adc.h>
 
 #include <stm32.h>
 #include "board_config.h"
-#include "led.h"
 #include <stm32_uart.h>
 
 #include <arch/board/board.h>
 
 #include <drivers/drv_hrt.h>
-#include <drivers/drv_board_led.h>
 #include <drivers/drv_watchdog.h>
+
+#include "led.h"
 
 #include <systemlib/px4_macros.h>
 
 #include <px4_platform_common/init.h>
-#include <px4_platform/gpio.h>
 
+#include <px4_platform/gpio.h>
+#include <px4_platform/board_dma_alloc.h>
 # if defined(FLASH_BASED_PARAMS)
 #  include <parameters/flashparams/flashfs.h>
 #endif

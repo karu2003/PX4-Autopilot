@@ -63,6 +63,8 @@ pipeline {
                      "holybro_kakutef7_default",
                      "holybro_kakuteh7_default",
                      "holybro_pix32v5_default",
+                     "ipm_gnss-m8q-f4_canbootloader",
+                     "ipm_gnss-m8q-f4_default",
                      "matek_gnss-m9n-f4_canbootloader",
                      "matek_gnss-m9n-f4_default",
                      "matek_h743-mini_default",

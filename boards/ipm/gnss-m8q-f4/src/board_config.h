@@ -71,13 +71,13 @@
 #define HRT_TIMER_CHANNEL            4  /* use capture/compare channel 4 */
 
 #define PX4_GPIO_INIT_LIST { \
-		GPIO_LED_SAFETY,                  \
-		GPIO_BTN_SAFETY,		  \
-		GPIO_BOOT_CONFIG,                 \
 		GPIO_I2C1_SCL_RESET,              \
 		GPIO_I2C1_SDA_RESET,              \
+		GPIO_BOOT_CONFIG,                 \
 		GPIO_CAN1_TX,                     \
 		GPIO_CAN1_RX,                     \
+		GPIO_LED_SAFETY,                  \
+		GPIO_BTN_SAFETY,		  \
 		GPIO_OTGFS_VBUS                   \
 	}
 

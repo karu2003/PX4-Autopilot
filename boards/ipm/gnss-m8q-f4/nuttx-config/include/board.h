@@ -56,36 +56,6 @@
  * Definitions
  ************************************************************************************/
 
-/* Clocking *************************************************************************/
-/* The Adafruit Feather STM32F405 Express board features a single 12MHz crystal.
- *
- * This is the canonical configuration:
- *   System Clock source           : PLL (HSE)
- *   SYSCLK(Hz)                    : 168000000    Determined by PLL configuration
- *   HCLK(Hz)                      : 168000000    (STM32_RCC_CFGR_HPRE)
- *   AHB Prescaler                 : 1            (STM32_RCC_CFGR_HPRE)
- *   APB1 Prescaler                : 4            (STM32_RCC_CFGR_PPRE1)
- *   APB2 Prescaler                : 2            (STM32_RCC_CFGR_PPRE2)
- *   HSE Frequency(Hz)             : 12000000     (STM32_BOARD_XTAL)
- *   PLLM                          : 6            (STM32_PLLCFG_PLLM)
- *   PLLN                          : 138          (STM32_PLLCFG_PLLN)
- *   PLLP                          : 2            (STM32_PLLCFG_PLLP)
- *   PLLQ                          : 7            (STM32_PLLCFG_PLLQ)
- *   Main regulator output voltage : Scale1 mode  Needed for high speed SYSCLK
- *   Flash Latency(WS)             : 5
- *   Prefetch Buffer               : OFF
- *   Instruction cache             : ON
- *   Data cache                    : ON
- *   Require 48MHz for USB OTG FS, : Enabled
- *   SDIO and RNG clock
- */
-
-/* HSI - 16 MHz RC factory-trimmed
- * LSI - 32 KHz RC
- * HSE - On-board crystal frequency is 12MHz
- * LSE - 32.768 kHz
- */
-
 #define STM32_BOARD_USEHSE      1
 #define STM32_BOARD_XTAL        12000000ul
 #define STM32_HSE_FREQUENCY     STM32_BOARD_XTAL
