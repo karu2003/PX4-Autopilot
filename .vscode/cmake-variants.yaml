@@ -141,6 +141,16 @@ CONFIG:
       buildType: MinSizeRel
       settings:
         CONFIG: ark_fmu-v6x_default
+    ipm_gnss-m8q-f4_canbootloader:
+      short: ipm_gnss-m8q-f4_canbootloader
+      buildType: MinSizeRel
+      settings:
+        CONFIG: ipm_gnss-m8q-f4_canbootloader
+    ipm_gnss-m8q-f4_default:
+      short: ipm_gnss-m8q-f4_default
+      buildType: MinSizeRel
+      settings:
+        CONFIG: ipm_gnss-m8q-f4_default
     atl_mantis-edu_default:
       short: atl_mantis-edu
       buildType: MinSizeRel

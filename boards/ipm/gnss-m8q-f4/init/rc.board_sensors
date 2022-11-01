@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# board sensors init
+#------------------------------------------------------------------------------
+gps start -d /dev/ttyS0 -p ubx
+
+icm42670p -R 0 -s start
+
+dps310 -I -b 1 start
+
+bmm150 -I -b 1 start
+
+dps310 -a 119 -I start
