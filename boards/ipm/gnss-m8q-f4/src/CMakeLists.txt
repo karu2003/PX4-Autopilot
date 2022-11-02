@@ -34,12 +34,9 @@
 if("${PX4_BOARD_LABEL}" STREQUAL  "canbootloader")
 
 	add_library(drivers_board
-		boot_config.h
+		#boot_config.h
 		boot.c
 		led.cpp
-		#led.h
-		#usb.c
-
 	)
 	target_link_libraries(drivers_board
 		PRIVATE
@@ -52,36 +49,23 @@ if("${PX4_BOARD_LABEL}" STREQUAL  "canbootloader")
 
 else()
 	add_library(drivers_board
-		#can.c
-		#i2c.cpp
-		#init.c
-		#spi.cpp
-		#timer_config.cpp
-		#usb.c
 		can.c
 		i2c.cpp
 		init.c
 		spi.cpp
 		usb.c
+		led.cpp
 	)
 
 	target_link_libraries(drivers_board
 		PRIVATE
 			arch_spi
-			arch_board_hw_info
+			#arch_board_hw_info
 			nuttx_arch
 			nuttx_drivers
 			px4_layer
 			arch_io_pins
+			platform_srgbled
 			#drivers__led # drv_led_start
-			#
-			#arch_spi
-			#nuttx_arch
-			#nuttx_drivers
-			#px4_layer
-
-
-
-
 	)
 endif()

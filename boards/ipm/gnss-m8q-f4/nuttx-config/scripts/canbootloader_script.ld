@@ -1,5 +1,5 @@
 /****************************************************************************
- * configs/gnss-m8q-f4/scripts/ld.canbootloader
+ * nuttx-config/scripts/canbootloader_script.ld
  *
  *   Copyright (C) 2011 Gregory Nutt. All rights reserved.
  *   Author: Gregory Nutt <gnutt@nuttx.org>

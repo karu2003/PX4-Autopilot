@@ -96,6 +96,8 @@ __EXPORT void stm32_boardinitialize(void)
 	const uint32_t gpio[] = PX4_GPIO_INIT_LIST;
 	px4_gpio_init(gpio, arraySize(gpio));
 
+	//board_i2c_initialize();
+
 	// Configure SPI all interfaces GPIO & enable power.
 	stm32_spiinitialize();
 

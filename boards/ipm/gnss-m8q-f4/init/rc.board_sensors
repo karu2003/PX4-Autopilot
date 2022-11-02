@@ -6,8 +6,8 @@ gps start -d /dev/ttyS1 -p ubx
 
 icm42670p -R 0 -s start
 
-bmm150 -I -b 1 -a 0x10 start
+bmm150 -I -a 0x10 start
 
-dps310 -I -b 1 -a 0x77  start
+dps310 -I -a 0x77  start
 
 sensors start

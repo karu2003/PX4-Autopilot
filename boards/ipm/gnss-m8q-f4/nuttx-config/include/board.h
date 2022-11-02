@@ -145,31 +145,18 @@
 #define GPIO_I2C1_SCL   /* PB6  */ GPIO_I2C1_SCL_1
 #define GPIO_I2C1_SDA   /* PB7  */ GPIO_I2C1_SDA_1
 
-/* SPI */
-#define ADJ_SLEW_RATE(p) (((p) & ~GPIO_SPEED_MASK) | (GPIO_SPEED_2MHz))
+/* SPI1 */
+//#define ADJ_SLEW_RATE(p) (((p) & ~GPIO_SPEED_MASK) | (GPIO_SPEED_2MHz))
 
 #define GPIO_SPI1_MISO /* PA6 */ GPIO_SPI1_MISO_1
-#define GPIO_SPI1_MOSI /* PB5 */ GPIO_SPI1_MOSI_2
-#define GPIO_SPI1_SCK  /* PA5 */ ADJ_SLEW_RATE(GPIO_SPI1_SCK_1)
-//#define GPIO_SPI1_SCK    GPIO_SPI1_SCK_1    /* PA5 */
+#define GPIO_SPI1_MOSI /* PA5 */ GPIO_SPI1_MOSI_1
+//#define GPIO_SPI1_SCK  /* PA5 */ ADJ_SLEW_RATE(GPIO_SPI1_SCK_1)
+#define GPIO_SPI1_SCK    /* PA5 */ GPIO_SPI1_SCK_1
 
-/* SPI2:
- *  SD Card
- *  CS: PB12 -- configured in board_config.h
- *  CLK: PB13
- *  MISO: PB14
- *  MOSI: PB15
- */
+/* SPI3 */
+#define GPIO_SPI3_SCK   /* PB3 */ GPIO_SPI3_SCK_1
+#define GPIO_SPI3_MISO	/* PB4 */ GPIO_SPI3_MISO_1
+#define GPIO_SPI3_MOSI	/* PB5 */ GPIO_SPI3_MOSI_1
 
-// #define GPIO_SPI2_SCK	  GPIO_SPI2_SCK_2
-// #define GPIO_SPI2_MISO	GPIO_SPI2_MISO_1
-// #define GPIO_SPI2_MOSI	GPIO_SPI2_MOSI_1
-
-/* SPI3: SD CARD
- *  CS: PC14 -- configured in board_config.h
- *  CLK: PB3
- *  MISO: PB4
- *  MOSI: PB5
- */
 
 #endif  /* __ARCH_BOARD_BOARD_H */
