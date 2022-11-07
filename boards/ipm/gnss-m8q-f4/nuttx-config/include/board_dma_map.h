@@ -39,5 +39,6 @@
 
 //  DMA2 Channel/Stream Selections
 //--------------------------------------------//---------------------------//----------------
+#define DMAMAP_TIM1_CH2   DMAMAP_TIM1_CH2_2   // DMA2, Stream 6, Channel 6    SLED
 #define DMACHAN_SPI1_RX    DMAMAP_SPI1_RX_1   // DMA2, Stream 0, Channel 3    (SPI1 sensors RX)
 #define DMACHAN_SPI1_TX    DMAMAP_SPI1_TX_1   // DMA2, Stream 3, Channel 3    (SPI1 sensors TX)

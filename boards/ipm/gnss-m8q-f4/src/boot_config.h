@@ -127,4 +127,5 @@
 /* Bootloader Option*****************************************************************
  *
  */
-#define GPIO_GETNODEINFO_JUMPER (GPIO_BOOT_CONFIG & ~GPIO_EXTI)
+//#define GPIO_GETNODEINFO_JUMPER (GPIO_BOOT_CONFIG & ~GPIO_EXTI)
+#define GPIO_GETNODEINFO_JUMPER   GPIO_NOPT_WAIT_FOR_GETNODEINFO

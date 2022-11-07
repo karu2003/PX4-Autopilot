@@ -1,6 +1,8 @@
 ############################################################################
 #
-#   Copyright (c) 2020 PX4 Development Team. All rights reserved.
+#   Copyright (C) 2015 Gregory Nutt. All rights reserved.
+#   Author: Gregory Nutt <gnutt@nuttx.org>
+#           David Sidrane <david_s5@nscdg.com>
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions
@@ -12,7 +14,7 @@
 #    notice, this list of conditions and the following disclaimer in
 #    the documentation and/or other materials provided with the
 #    distribution.
-# 3. Neither the name PX4 nor the names of its contributors may be
+# 3. Neither the name NuttX nor the names of its contributors may be
 #    used to endorse or promote products derived from this software
 #    without specific prior written permission.
 #
@@ -31,43 +33,68 @@
 #
 ############################################################################
 
-if("${PX4_BOARD_LABEL}" STREQUAL  "canbootloader")
+-include $(TOPDIR)/Make.defs
 
-	add_library(drivers_board
-		#boot_config.h
-		boot.c
-		led.cpp
-		#led.c
-		#usb.c
-	)
-	target_link_libraries(drivers_board
-		PRIVATE
-			nuttx_arch
-			nuttx_drivers
-			canbootloader
-			platform_srgbled
-			#drivers__led
-	)
-	target_include_directories(drivers_board PRIVATE ${PX4_SOURCE_DIR}/platforms/nuttx/src/canbootloader)
+CFLAGS		+= -I$(TOPDIR)/sched
 
-else()
-	add_library(drivers_board
-		can.c
-		i2c.cpp
-		init.c
-		spi.cpp
-		usb.c
-		led.cpp
-	)
+ASRCS		=
+AOBJS		= $(ASRCS:.S=$(OBJEXT))
 
-	target_link_libraries(drivers_board
-		PRIVATE
-			arch_spi
-			nuttx_arch
-			nuttx_drivers
-			px4_layer
-			arch_io_pins
-			platform_srgbled
-			drivers__led # drv_led_start
-	)
-endif()
+ifeq ($(CONFIG_BOOTLOADER),)
+CSRCS		= empty.c
+endif
+ifeq ($(CONFIG_BOOTLOADER),y)
+
+SRC_SEARCH = 	bootloader/can bootloader/src bootloader/common bootloader/uavcan
+
+CSRCS		= ostubs.c
+
+CFLAGS += $(addprefix -I,$(SRC_SEARCH))
+DEPOPTS = $(addprefix --dep-path ,$(SRC_SEARCH))
+VPATH= 	$(SRC_SEARCH)
+endif
+
+COBJS		= $(CSRCS:.c=$(OBJEXT))
+
+SRCS		= $(ASRCS) $(CSRCS)
+OBJS		= $(AOBJS) $(COBJS)
+
+ARCH_SRCDIR	= $(TOPDIR)/arch/$(CONFIG_ARCH)/src
+ifeq ($(WINTOOL),y)
+  CFLAGS	+= -I "${shell cygpath -w $(ARCH_SRCDIR)/chip}" \
+			   -I "${shell cygpath -w $(ARCH_SRCDIR)/common}" \
+			   -I "${shell cygpath -w $(ARCH_SRCDIR)/armv7-m}"
+else
+  CFLAGS	+= -I$(ARCH_SRCDIR)/chip -I$(ARCH_SRCDIR)/common -I$(ARCH_SRCDIR)/armv7-m
+endif
+
+all: libboard$(LIBEXT)
+
+$(AOBJS): %$(OBJEXT): %.S
+	$(call ASSEMBLE, $<, $@)
+
+$(COBJS) $(LINKOBJS): %$(OBJEXT): %.c
+	$(call COMPILE, $<, $@)
+
+libboard$(LIBEXT): $(OBJS)
+	$(call ARCHIVE, $@, $(OBJS))
+
+.depend: Makefile $(SRCS)
+	@$(MKDEP) $(CC) -- $(CFLAGS) -- $(SRCS) >Make.dep
+	@touch $@
+
+depend: .depend
+
+clean:
+	$(call DELFILE, libboard$(LIBEXT))
+	$(call CLEAN)
+
+distclean: clean
+	$(call DELFILE, Make.dep)
+	$(call DELFILE, .depend)
+
+ifneq ($(BOARD_CONTEXT),y)
+context:
+endif
+
+-include Make.dep

@@ -29,6 +29,26 @@
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "stutil",
+            //"serverpath": "arm-none-eabi-gdb"
+            "cwd": "${workspaceFolder}",
+            "internalConsoleOptions": "openOnSessionStart",
+            "preLaunchCommands": [
+                "source ${workspaceFolder}/platforms/nuttx/Debug/PX4",
+                "source ${workspaceFolder}/platforms/nuttx/Debug/NuttX",
+                "source ${workspaceFolder}/platforms/nuttx/Debug/ARMv7M",
+                "set mem inaccessible-by-default off",
+                "set print pretty",
+            ]
+        },
+        {
+            "name": "pyocd (@PX4_BOARD@)",
+            "device": "@DEBUG_DEVICE@",
+            "svdFile": "@DEBUG_SVD_FILE_PATH@",
+            "executable": "${command:cmake.launchTargetPath}",
+            "request": "launch",
+            "type": "cortex-debug",
+            //"serverpath":"arm-none-eabi-gdb"
+            "servertype": "pyocd",
             "cwd": "${workspaceFolder}",
             "internalConsoleOptions": "openOnSessionStart",
             "preLaunchCommands": [

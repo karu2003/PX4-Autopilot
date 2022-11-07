@@ -3,7 +3,7 @@
 # board specific defaults
 #------------------------------------------------------------------------------
 
-#param set-default CBRK_IO_SAFETY 0
+param set-default CBRK_IO_SAFETY 0
 #param set-default MBE_ENABLE 1
 
 neopixel start
