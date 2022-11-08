@@ -69,6 +69,7 @@
 #define OPT_NODE_STATUS_RATE_MS         800
 #define OPT_NODE_INFO_RATE_MS           50
 #define OPT_BL_NUMBER_TIMERS            7
+#undef  S_RGB_LED_DMA
 
 /*
  *  This Option set is set to 1 ensure a provider of firmware has an
@@ -95,7 +96,13 @@
 #define OPT_WAIT_FOR_GETNODEINFO_JUMPER_GPIO        1
 #define OPT_WAIT_FOR_GETNODEINFO_JUMPER_GPIO_INVERT 0
 
-#define OPT_ENABLE_WD           1
+//#define OPT_AUTOBAUD_DISABLE                     1
+//#define OPT_CAN_SPEED			CAN_1MBAUD
+//#define OPT_CAN_SPEED                   CAN_500KBAUD
+
+//#define DEBUG_APPLICATION_INPLACE 1
+
+#define OPT_ENABLE_WD           //1
 
 #define OPT_RESTART_TIMEOUT_MS          20000
 

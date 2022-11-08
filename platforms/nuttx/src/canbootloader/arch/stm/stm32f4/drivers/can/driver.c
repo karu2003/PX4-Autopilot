@@ -343,7 +343,12 @@ int can_autobaud(can_speed_t *can_speed, bl_timer_id timeout)
 	can_speed_t speed = CAN_125KBAUD;
 
 	time_hrt_cycles_t samples[128];
-
+#ifdef OPT_AUTOBAUD_DISABLE
+	speed = OPT_CAN_SPEED;
+	*can_speed = speed;
+	can_init(speed, CAN_Mode_Normal);
+	return CAN_OK;
+#endif
 	while (1) {
 
 
