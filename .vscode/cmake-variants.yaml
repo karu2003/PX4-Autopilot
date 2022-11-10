@@ -211,6 +211,11 @@ CONFIG:
       buildType: MinSizeRel
       settings:
         CONFIG: holybro_durandal-v1_default
+    ipm_can-zero_default:
+      short: ipm_can-zero
+      buildType: MinSizeRel
+      settings:
+        CONFIG: ipm_can-zero_default
     matek_h743-slim_default:
       short: matek_h743-slim
       buildType: MinSizeRel

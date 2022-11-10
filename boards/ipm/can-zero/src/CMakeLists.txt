@@ -30,7 +30,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 #
 ############################################################################
-
+set(UAVCAN_DRIVER "socketcan")
 add_library(drivers_board
 	i2c.cpp
 	spi.cpp

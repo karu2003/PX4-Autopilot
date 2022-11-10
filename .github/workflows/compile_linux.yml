@@ -19,6 +19,7 @@ jobs:
           emlid_navio2_default,
           px4_raspberrypi_default,
           scumaker_pilotpi_default,
+          ipm_can-zero_default,
           ]
     steps:
     - uses: actions/checkout@v1

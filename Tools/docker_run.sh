@@ -5,8 +5,8 @@ if [ -z ${PX4_DOCKER_REPO+x} ]; then
 	if [[ $@ =~ .*px4_fmu.* ]]; then
 		# nuttx-px4fmu-v{1,2,3,4,5}
 		PX4_DOCKER_REPO="px4io/px4-dev-nuttx-focal:2021-09-08"
-	elif [[ $@ =~ .*navio2.* ]] || [[ $@ =~ .*raspberry.* ]] || [[ $@ =~ .*beaglebone.* ]] || [[ $@ =~ .*pilotpi.default ]]; then
-		# beaglebone_blue_default, emlid_navio2_default, px4_raspberrypi_default, scumaker_pilotpi_default
+	elif [[ $@ =~ .*navio2.* ]] || [[ $@ =~ .*raspberry.* ]] || [[ $@ =~ .*beaglebone.* ]] || [[ $@ =~ .*pilotpi.default ]] || [[ $@ =~ .*can-zero.* ]]; then
+		# beaglebone_blue_default, emlid_navio2_default, px4_raspberrypi_default, scumaker_pilotpi_default, ipm_can-zero_default
 		PX4_DOCKER_REPO="px4io/px4-dev-armhf:2021-08-18"
 	elif [[ $@ =~ .*pilotpi.arm64 ]]; then
 		# scumaker_pilotpi_arm64
